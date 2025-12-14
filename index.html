@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced QR Code Generator with logo support, custom colors, and history tracking.">
+    <title>QRExpert | Pro QR Code Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-blobs"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="ri-qr-code-line"></i> QRExpert
+            </div>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                <i class="ri-moon-line"></i>
+            </button>
+        </header>
+
+        <main class="main-grid">
+            <section class="controls-panel glass-card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-type="text">Text / URL</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="qr-text">Content</label>
+                    <input type="text" id="qr-text" placeholder="Enter URL or Text here..." value="https://example.com">
+                </div>
+
+                <div class="settings-group">
+                    <h3><i class="ri-palette-line"></i> Appearance</h3>
+                    
+                    <div class="color-pickers">
+                        <div class="picker">
+                            <label>Foreground</label>
+                            <input type="color" id="color-dark" value="#000000">
+                        </div>
+                        <div class="picker">
+                            <label>Background</label>
+                            <input type="color" id="color-light" value="#ffffff">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Logo Upload (Center)</label>
+                        <input type="file" id="logo-input" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3><i class="ri-settings-4-line"></i> Settings</h3>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label>Size (px)</label>
+                            <select id="qr-size">
+                                <option value="200">200px</option>
+                                <option value="300" selected>300px</option>
+                                <option value="400">400px</option>
+                                <option value="600">600px</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>Error Correction</label>
+                            <select id="qr-correct">
+                                <option value="L">Low (7%)</option>
+                                <option value="M" selected>Medium (15%)</option>
+                                <option value="Q">Quartile (25%)</option>
+                                <option value="H">High (30%)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-panel">
+                <div class="glass-card preview-card">
+                    <div id="qr-code-container">
+                        </div>
+                    <div class="action-buttons">
+                        <button id="btn-download" class="btn-primary">
+                            <i class="ri-download-line"></i> Download PNG
+                        </button>
+                        <button id="btn-copy" class="btn-secondary" title="Copy Image">
+                            <i class="ri-file-copy-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="history-section glass-card">
+                    <div class="history-header">
+                        <h3>Recent History</h3>
+                        <button id="clear-history" class="text-btn">Clear</button>
+                    </div>
+                    <ul id="history-list">
+                        </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.5.0/dist/easy.qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
